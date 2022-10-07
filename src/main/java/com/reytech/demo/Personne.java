@@ -2,7 +2,7 @@ package com.reytech.demo;
 
 public class Personne {
 
-    public String firstName;
+    public string firstName;
     public String lastName;
 
     public Personne(String firstName, String lastName) {
