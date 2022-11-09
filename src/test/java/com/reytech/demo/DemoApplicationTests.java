@@ -18,7 +18,7 @@ class DemoApplicationTests {
         Personne pers = new Personne("Nassur", "Moumadii");
 
         assertAll("personne", () -> assertEquals("Nassur", pers.getFirstName()),
-                              () -> assertEquals("Moumadi", pers.getLastName()));
+                              () -> assertEquals("Moumadii", pers.getLastName()));
     }
 
 
