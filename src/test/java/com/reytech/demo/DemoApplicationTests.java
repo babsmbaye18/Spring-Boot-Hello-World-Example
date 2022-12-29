@@ -10,7 +10,7 @@ import com.reytech.demo.Personne;
 class DemoApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void contextLoads() { 
 	}
 	
 	@Test
