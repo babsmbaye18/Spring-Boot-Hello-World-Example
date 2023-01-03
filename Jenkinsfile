@@ -48,9 +48,9 @@ pipeline {
           }
         }	
         
-        stage('Sonarqube') {
+        stage('Sonarqube Scanner') {
             environment {
-                SCANNER_HOME = tool 'SonarQubeScanner'
+                SCANNER_HOME = tool 'sonarqube'
                 ORGANIZATION = "EQL"
                 PROJECT_NAME = "my_boot_01"
             }
