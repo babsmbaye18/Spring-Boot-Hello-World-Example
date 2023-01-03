@@ -34,16 +34,7 @@ pipeline {
                 }
             }
         }     
-        stage('Code coverage') {
-            steps {
-                jacoco( 
-                      execPattern: 'target/*.exec',
-                      classPattern: 'target/classes',
-                      sourcePattern: 'src/main/java',
-                      exclusionPattern: 'src/test*'
-                )
-            }
-        }
+      
         stage('Sanity check') {
           steps {
             echo "-=- Sanity Check Test project -=-"
@@ -56,7 +47,8 @@ pipeline {
             }
           }
         }	
-        stage('Quality Analysis Sonarqube') {
+        
+        stage('Sonarqube') {
             environment {
                 SCANNER_HOME = tool 'SonarQubeScanner'
                 ORGANIZATION = "EQL"
@@ -125,7 +117,6 @@ pipeline {
              }
           }
         }
-
 
        stage('Checkout Selenium') {
             steps {
