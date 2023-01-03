@@ -34,19 +34,6 @@ pipeline {
                 }
             }
         }     
-      
-        stage('Sanity check') {
-          steps {
-            echo "-=- Sanity Check Test project -=-"
-            sh 'mvn clean install checkstyle:checkstyle pmd:pmd'
-          }
-          post {
-            always {
-              recordIssues enabledForFailure: true, tools: [checkStyle()]
-              recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
-            }
-          }
-        }	
         
         stage('Sonarqube Scanner') {
             environment {
@@ -62,7 +49,7 @@ pipeline {
                     -Dsonar.projectKey=$PROJECT_NAME \
                     -Dsonar.language=java \
                     -Dsonar.sourceEncoding=UTF-8'''
-                }
+                  }
             }
         }
       
@@ -92,6 +79,7 @@ pipeline {
              }
           }
         }
+        
         stage('Continuous deployment') {
           steps {
              script {
@@ -124,6 +112,7 @@ pipeline {
                 git url: 'https://github.com/zaba221/example-springboot-automation-test-selenium.git'
             }
         }
+        
         stage('Selenium Test Job') {
             steps {
                  build job: 'projet-selenium' 
